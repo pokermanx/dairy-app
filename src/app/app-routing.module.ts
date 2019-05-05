@@ -4,17 +4,17 @@ import { NavbarComponent } from './shared/ui/navbar/navbar.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/list',
+    pathMatch: 'full'
+  },
+  {
     path: '', component: NavbarComponent, children: [
       {
         path: 'list',
         loadChildren: '../app/items-list/items-list.module#ItemsListModule'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/list',
-    pathMatch: 'full'
   },
   {
     path: '**',

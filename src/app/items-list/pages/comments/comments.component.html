@@ -1,0 +1,16 @@
+<div class="dairy-card">
+    <span class="container-title">
+        Comments #{{ selectedItem.id }}
+    </span>
+    <div class="list">
+        <div class="comment" *ngFor="let comment of selectedItem.comments">
+            <span class="user-image" [ngStyle]="{'background-color': comment.color}"></span>
+            <span class="comment-text"></span>
+            {{ comment.text }}
+        </div>
+    </div>
+    <div class="bottom-container">
+        <textarea class="comment-input" [formControl]="commentInput" placeholder="Comment..."></textarea>
+        <div class="dairy-btn dairy-btn--add btn-right" (click)="commentInput.valid && addComment()">Comment</div>
+    </div>
+</div>

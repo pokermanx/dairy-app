@@ -1,10 +1,8 @@
 @import "../../shared/scss/variables";
 
 .list-wrapper {
-	width: 50%;
-	margin: 10px;
+	width: 100%;
 	display: flex;
-	flex-wrap: wrap;
 }
 
 .inputs-container {
@@ -31,11 +29,6 @@
 	border-bottom: 1px solid #e9e9e9;
 }
 
-.list {
-	overflow: auto;
-	max-height: calc(100vh - 180px);
-}
-
 .item-name {
     font-weight: 600;
     font-size: $font-size-sub;
@@ -47,4 +40,8 @@
 	color: #ffffff;
     background-color: $color-success-btn;
     font-size: 16px;
+}
+
+.item-active {
+	border-left: 3px solid red;
 }

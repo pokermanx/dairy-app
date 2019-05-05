@@ -9,7 +9,11 @@
         </div>
         <div class="list-container">
             <div class="list">
-                <div class="item" *ngFor="let item of itemsList">
+                <div class="item"
+                    *ngFor="let item of itemsList"
+                    [ngClass]="{'item-active': selectedItem.getValue().id === item.id}"
+                    (click)="selectedItem.next(item)"
+                >
                     <div>
                         <span class="item-name">
                             {{ item.name }}
@@ -25,4 +29,5 @@
             </div>
         </div>
     </div>
+    <app-comments [(selected)]="selectedItem" (commentAdded)="commentAdded()"></app-comments>
 </div>

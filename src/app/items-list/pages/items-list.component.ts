@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemModel } from 'src/app/shared/models/item.model';
 import { FormControl, Validators } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-items-list',
     templateUrl: './items-list.component.html',
-    styleUrls: ['./items-list.component.scss', '../../shared/scss/buttons.scss', '../../shared/scss/card.scss']
+    styleUrls: ['./items-list.component.scss', '../../shared/scss/buttons.scss', '../../shared/scss/card.scss'],
 })
 export class ItemsListComponent implements OnInit {
 
     itemsList: ItemModel[];
 
+    selectedItem: BehaviorSubject<ItemModel>;
+
     itemName = new FormControl(null, [
         Validators.required
     ]);
+
+    commentAdded() {
+        localStorage.setItem('items', JSON.stringify(this.itemsList));
+    }
 
     constructor () {}
 
@@ -52,6 +59,7 @@ export class ItemsListComponent implements OnInit {
         // ]));
 
         this.itemsList = JSON.parse(localStorage.getItem('items'));
+        this.selectedItem = new BehaviorSubject<ItemModel>(this.itemsList[0]);
         console.log(this.itemsList);
         localStorage.setItem('items', JSON.stringify(this.itemsList));
     }
@@ -62,7 +70,7 @@ export class ItemsListComponent implements OnInit {
             id: isFinite(lastId) ? +(lastId + 1) : 1,
             name: this.itemName.value,
             comments: [],
-            commentsCount: 0
+            commentsCount: 0,
         };
         this.itemsList.push(item);
         localStorage.setItem('items', JSON.stringify(this.itemsList));
