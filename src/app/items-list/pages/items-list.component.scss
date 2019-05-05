@@ -1,0 +1,50 @@
+@import "../../shared/scss/variables";
+
+.list-wrapper {
+	width: 50%;
+	margin: 10px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.inputs-container {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.name-input {
+	width: 80%;
+	padding: 5px 10px;
+	background-color: $color-primary;
+	outline: none;
+	border: 1px solid #c9c9c9;
+	border-radius: 3px;
+	margin-right: 10px;
+}
+
+.item {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #e9e9e9;
+}
+
+.list {
+	overflow: auto;
+	max-height: calc(100vh - 180px);
+}
+
+.item-name {
+    font-weight: 600;
+    font-size: $font-size-sub;
+}
+
+.comments-count {
+    padding: 0 8px;
+	border-radius: 20px;
+	color: #ffffff;
+    background-color: $color-success-btn;
+    font-size: 16px;
+}

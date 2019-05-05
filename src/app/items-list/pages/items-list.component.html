@@ -1,1 +1,28 @@
-asdasd
+<div class="list-wrapper">
+    <div class="dairy-card">
+        <span class="container-title">
+            Items
+        </span>
+        <div class="inputs-container">
+            <input type="text" [formControl]="itemName" class="name-input" placeholder="Type name here...">
+            <div class="dairy-btn dairy-btn--add" (click)="itemName.valid && onAdd()">Add new</div>
+        </div>
+        <div class="list-container">
+            <div class="list">
+                <div class="item" *ngFor="let item of itemsList">
+                    <div>
+                        <span class="item-name">
+                            {{ item.name }}
+                        </span>
+                        <span class="comments-count">
+                            {{ item.commentsCount }}
+                        </span>
+                    </div>
+                    <div class="dairy-btn dairy-btn--delete" (click)="onDelete(item.id)">
+                        Delete
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

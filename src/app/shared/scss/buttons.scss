@@ -1,0 +1,34 @@
+@import './variables';
+
+.dairy-btn {
+
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 16px;
+    min-height: 35px;
+    font-family: $font-stack;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--add {
+        width: 120px;
+        background-color: $color-success-btn;
+        color: #ffffff;
+
+        &:hover {
+            filter: brightness(110%);
+        }
+    }
+
+    &--delete {
+        width: 90px;
+        border: 1px solid $color-danger-btn;
+        color: $color-danger-btn;
+
+        &:hover {
+            background-color: $color-danger-btn;
+            color: #ffffff;
+        }
+    }
+}
