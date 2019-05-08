@@ -20,18 +20,20 @@ export class ItemsListComponent implements OnInit {
 
     commentAdded() {
         localStorage.setItem('items', JSON.stringify(this.itemsList));
+        localStorage.setItem('lastSelected', JSON.stringify(this.selectedItem.getValue().id));
     }
 
     constructor() { }
 
     ngOnInit() {
         this.itemsList = JSON.parse(localStorage.getItem('items'));
-        const selectedFromStorage: ItemModel = localStorage.getItem('lastSelected') !== 'undefined' ?
-            JSON.parse(localStorage.getItem('lastSelected')) :
-            this.itemsList[0];
-        this.selectedItem = new BehaviorSubject<ItemModel>(selectedFromStorage);
+        const selectedFromStorage = localStorage.getItem('lastSelected') !== 'undefined' ?
+            localStorage.getItem('lastSelected') :
+            this.itemsList[0].id;
+
+        this.selectedItem = new BehaviorSubject<ItemModel>(this.itemsList.find(x => x.id === +selectedFromStorage));
         this.selectedItem.subscribe(selection => {
-            localStorage.setItem('lastSelected', JSON.stringify(this.selectedItem.getValue()));
+            localStorage.setItem('lastSelected', JSON.stringify(selection.id));
         });
         localStorage.setItem('items', JSON.stringify(this.itemsList));
     }
