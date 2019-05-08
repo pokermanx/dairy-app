@@ -1,7 +1,7 @@
 <div class="login-wrapper">
     <span class="login-title">Login</span>
     <span class="error-message">{{ errorMessage }}</span>
-    <form [formGroup]="loginForm" class="login-form">
+    <form [formGroup]="loginForm" class="login-form" (keydown)="keyDownFunction($event)">
         <div class="input-block">
             <label for="username" class="input-label">Username</label>
             <input class="login-input" type="text" placeholder="Your Username" id="username" formControlName="username">

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private loginServie: LoginService,
         private router: Router,
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.loginForm = new FormGroup({
@@ -40,5 +40,11 @@ export class LoginComponent implements OnInit {
                     this.errorMessage = 'Username or password is incorect';
                 }
             });
+    }
+
+    keyDownFunction(event) {
+        if (event.keyCode === 13) {
+            this.onLogin();
+        }
     }
 }

@@ -85,6 +85,10 @@ export class InitService {
                 nisi scelerisque eu. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh.`,
                 'color': '#943045'
             },
+            {
+                'text': 'Small comment',
+                'color': '#943045'
+            }
         ]
     };
 

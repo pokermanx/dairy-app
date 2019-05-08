@@ -1,12 +1,28 @@
 <div class="app-wrapper">
-    <div class="left-block">
-        <span class="app-title">
-            Dairy app
-        </span>
-        <span class="app-subtitle">
-            Comment with no sense
-        </span>
-        <div class="dairy-btn dairy-btn--delete logout-btn" (click)="onLogout()">Log Out</div>
+    <div [ngSwitch]="isCollapsed" class="menu-icon">
+        <i class="fas fa-bars"
+            *ngSwitchCase="true"
+            (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseExample">
+        </i>
+        <i class="far fa-times-circle menu-close"
+            *ngSwitchCase="false"
+            (click)="isCollapsed = !isCollapsed"
+            aria-controls="collapseExample"
+            [attr.aria-expanded]="!isCollapsed">
+        </i>
+    </div>
+    <div id="collapseExample" [ngbCollapse]="isCollapsed">
+        <div class="left-block" [ngClass]="{'left-block-over': isSmall }">
+            <span class="app-title">
+                Dairy app
+            </span>
+            <span class="app-subtitle">
+                Comment with no sense
+            </span>
+            <div class="dairy-btn dairy-btn--delete logout-btn" (click)="onLogout()">Log Out</div>
+        </div>
     </div>
     <div class="main-container">
         <router-outlet></router-outlet>

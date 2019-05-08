@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ItemModel } from 'src/app/shared/models/item.model';
 import { FormControl, Validators } from '@angular/forms';
@@ -18,7 +18,7 @@ export enum Colors {
     styleUrls: ['./comments.component.scss', '../../../shared/scss/card.scss', '../../../shared/scss/buttons.scss'],
 })
 
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnInit, OnDestroy {
 
     @Input() selected: BehaviorSubject<ItemModel>;
 
@@ -48,6 +48,10 @@ export class CommentsComponent implements OnInit {
         this.selectedItem.commentsCount += 1;
         this.commentInput.setValue(null);
         this.commentAdded.emit();
+    }
+
+    ngOnDestroy() {
+        this.selected.unsubscribe();
     }
 
 }

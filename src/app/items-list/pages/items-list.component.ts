@@ -22,49 +22,17 @@ export class ItemsListComponent implements OnInit {
         localStorage.setItem('items', JSON.stringify(this.itemsList));
     }
 
-    constructor () {}
+    constructor() { }
 
     ngOnInit() {
-        // localStorage.setItem('items', JSON.stringify([
-        //     {
-        //         id: 1,
-        //         name: 'ne No',
-        //         comments: [
-        //             'sdafasdjsfdkjfdsjkfdskjfdskhjfds sfd jhsdhfs dh fsdjkh sfj',
-        //             'sdafasdjsfdkjfdsjkfdskjfdsa2332khjfds sfd jhsdhfs dh fsdjkh sfj',
-        //             'sda5fasdjsfdkjfdsjkfdskjfdskhdasjfds sfd jh55sdhfs dh fsdjkh sfj',
-        //         ],
-        //         commentsCount: 3
-        //     },
-        //     {
-        //         id: 3,
-        //         name: 'ssss No',
-        //         comments: [
-        //             'sdafasdjsfdkjfdsjkfdskjfdskhjfds sfd jhsdhfs dh fsdjkh sfj',
-        //             'sdafasdjsfdkjfdsjkfdskjfdsa2332khjfds sfd jhsdhfs dh fsdjkh sfj',
-        //             'sda5fasdjsfdkjfdsjkfdskjfdskhdasjfds sfd jh55sdhfs dh fsdjkh sfj',
-        //         ],
-        //         commentsCount: 3
-        //     },
-        //     {
-        //         id: 4,
-        //         name: 'last No',
-        //         comments: [
-        //             'sdafasdjsfdkjfdsjkfdskjfdskhjfds sfd jhsdhfs dh fsdjkh sfj',
-        //             'sdafasdjsfdkjfdsjkfdskjfdsa2332khjfds sfd jhsdhfs dh fsdjkh sfj',
-        //             'sda5fasdjsfdkjfdsjkfdskjfdskhdasjfds sfd jh55sdhfs dh fsdjkh sfj',
-        //         ],
-        //         commentsCount: 3
-        //     },
-        // ]));
-
         this.itemsList = JSON.parse(localStorage.getItem('items'));
-
-        this.selectedItem = new BehaviorSubject<ItemModel>(JSON.parse(localStorage.getItem('lastSelected')));
+        const selectedFromStorage: ItemModel = localStorage.getItem('lastSelected') !== 'undefined' ?
+            JSON.parse(localStorage.getItem('lastSelected')) :
+            this.itemsList[0];
+        this.selectedItem = new BehaviorSubject<ItemModel>(selectedFromStorage);
         this.selectedItem.subscribe(selection => {
             localStorage.setItem('lastSelected', JSON.stringify(this.selectedItem.getValue()));
         });
-        console.log(this.itemsList);
         localStorage.setItem('items', JSON.stringify(this.itemsList));
     }
 
