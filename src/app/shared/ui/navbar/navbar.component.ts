@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 
 @Component({
     selector: 'app-navbar',
@@ -9,5 +10,11 @@ export class NavbarComponent {
 
     isCollapsed = false;
 
-    constructor() {}
+    constructor(
+        private loginService: LoginService
+    ) {}
+
+    onLogout() {
+        this.loginService.logout();
+    }
 }

@@ -1,0 +1,17 @@
+<div class="login-wrapper">
+    <span class="login-title">Login</span>
+    <span class="error-message">{{ errorMessage }}</span>
+    <form [formGroup]="loginForm" class="login-form">
+        <div class="input-block">
+            <label for="username" class="input-label">Username</label>
+            <input class="login-input" type="text" placeholder="Your Username" id="username" formControlName="username">
+        </div>
+        <div class="input-block">
+            <label for="password" class="input-label">Password</label>
+            <input class="login-input" type="password" placeholder="Your Password" id="password" formControlName="password">
+        </div>
+        <div class="dairy-btn dairy-btn--add full-width" (click)="loginForm.valid && onLogin()">
+            Sign In
+        </div>
+    </form>
+</div>
