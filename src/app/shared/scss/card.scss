@@ -2,9 +2,10 @@
 
 
 .dairy-card {
+	flex-grow: 1;
 	margin: 10px;
 	min-width: 500px;
-	width: 100%;
+	max-width: 720px;
 	padding: 10px 30px 20px 30px;
     display: flex;
     min-height: 600px;
@@ -24,5 +25,6 @@
 
 .list {
 	overflow: auto;
+	margin-bottom: 10px;
 	max-height: calc(100vh - 180px);
 }

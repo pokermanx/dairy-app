@@ -1,13 +1,15 @@
-<div class="dairy-card">
+<div class="dairy-card" *ngIf="selectedItem">
     <span class="container-title">
         Comments #{{ selectedItem.id }}
     </span>
     <div class="list">
         <div class="comment" *ngFor="let comment of selectedItem.comments">
             <span class="user-image" [ngStyle]="{'background-color': comment.color}"></span>
-            <span class="comment-text"></span>
-            {{ comment.text }}
+            <span class="comment-text">
+                {{ comment.text }}
+            </span>
         </div>
+        <span class="no-text" *ngIf="!selectedItem.comments.length">No comments here yet.</span>
     </div>
     <div class="bottom-container">
         <textarea class="comment-input" [formControl]="commentInput" placeholder="Comment..."></textarea>

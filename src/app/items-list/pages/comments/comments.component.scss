@@ -1,5 +1,7 @@
+@import "../../../shared/scss/variables";
+
 :host {
-    width: 100%;
+    flex-grow: 1;
 }
 
 .comment {
@@ -13,19 +15,51 @@
     width: 60px;
     height: 60px;
     background-color: red;
+    margin-right: 20px;
 }
 
 .comment-input {
     resize: none;
+    padding: 5px 10px;
+	background-color: $color-primary;
+	outline: none;
+	border: 1px solid #c9c9c9;
+    border-radius: 3px;
+	color: $font-color;
+    
+    &::placeholder {
+        color: $placeholder-color;
+    }
+}
+
+.list {
+    max-height: calc(100vh - 250px) !important;
+    flex-grow: 1;
+}
+
+.no-text {
+    color: #c2c2c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
 }
 
 .bottom-container {
     display: flex;
     flex-direction: column;
     width: 100%;
+    justify-self: flex-end;
 }
 
 .btn-right {
     margin: 10px;
+    margin-right: 0;
     align-self: flex-end;
+}
+
+.comment-text {
+    width: 80%;
+    color: $font-color;
+    font-size: 16px;
 }

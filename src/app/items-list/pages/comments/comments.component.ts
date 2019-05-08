@@ -46,6 +46,7 @@ export class CommentsComponent implements OnInit {
         };
         this.selectedItem.comments.push(comment);
         this.selectedItem.commentsCount += 1;
+        this.commentInput.setValue(null);
         this.commentAdded.emit();
     }
 

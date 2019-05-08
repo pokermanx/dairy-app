@@ -59,7 +59,11 @@ export class ItemsListComponent implements OnInit {
         // ]));
 
         this.itemsList = JSON.parse(localStorage.getItem('items'));
-        this.selectedItem = new BehaviorSubject<ItemModel>(this.itemsList[0]);
+
+        this.selectedItem = new BehaviorSubject<ItemModel>(JSON.parse(localStorage.getItem('lastSelected')));
+        this.selectedItem.subscribe(selection => {
+            localStorage.setItem('lastSelected', JSON.stringify(this.selectedItem.getValue()));
+        });
         console.log(this.itemsList);
         localStorage.setItem('items', JSON.stringify(this.itemsList));
     }
@@ -75,10 +79,15 @@ export class ItemsListComponent implements OnInit {
         this.itemsList.push(item);
         localStorage.setItem('items', JSON.stringify(this.itemsList));
         this.itemName.setValue(null);
+        this.selectedItem.next(item);
     }
 
     onDelete(id: number) {
         this.itemsList = this.itemsList.filter(el => el.id !== id);
+
+        if (this.selectedItem.getValue().id === id) {
+            this.selectedItem.next(this.itemsList[0]);
+        }
         localStorage.setItem('items', JSON.stringify(this.itemsList));
     }
 }
