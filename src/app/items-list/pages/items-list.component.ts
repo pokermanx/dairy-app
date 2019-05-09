@@ -32,10 +32,9 @@ export class ItemsListComponent implements OnInit {
             this.itemsList[0].id;
 
         this.selectedItem = new BehaviorSubject<ItemModel>(this.itemsList.find(x => x.id === +selectedFromStorage));
-        this.selectedItem.subscribe(selection => {
+        this.selectedItem.subscribe((selection: ItemModel) => {
             localStorage.setItem('lastSelected', JSON.stringify(selection.id));
         });
-        localStorage.setItem('items', JSON.stringify(this.itemsList));
     }
 
     onAdd() {
